@@ -6,7 +6,7 @@ import (
 
 type Location struct {
 	gorm.Model
-	Id         int    `json:"id`
+	Id         int    `json:"id"`
 	Name       string `json:"name"`
 	Text       string `json:"text"`
 	Deleted_at string `json:"deleted_at"`

@@ -22,7 +22,7 @@ func init() {
 	dbName := os.Getenv("db_name")
 	dbHost := os.Getenv("db_host")
 
-	dbUri := fmt.Sprintf("host=%s dbname=%s sslmode=disable", dbHost, dbName) //Build connection string
+	dbUri := fmt.Sprintf("host=%s dbname=%s sslmode=disable", dbHost, dbName)
 	fmt.Println(dbUri)
 
 	conn, err := gorm.Open("postgres", dbUri)
