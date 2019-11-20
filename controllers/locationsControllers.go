@@ -9,6 +9,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var FetchAllLocations = func(w http.ResponseWriter, r *http.Request) {
+	data := models.GetAllLocations()
+	resp := u.Message(true, "success")
+	resp["locations"] = data
+	u.Respond(w, resp)
+}
+
 var FetchLocationById = func(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["location_id"])
@@ -19,6 +26,6 @@ var FetchLocationById = func(w http.ResponseWriter, r *http.Request) {
 
 	data := models.GetLocationById(int(id))
 	resp := u.Message(true, "success")
-	resp["data"] = data
+	resp["location"] = data
 	u.Respond(w, resp)
 }

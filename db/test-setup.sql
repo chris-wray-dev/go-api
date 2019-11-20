@@ -48,4 +48,4 @@ VALUES (4, 'Another Place', 'This is the Another Place. Many famous bands have p
 INSERT INTO locations (id, name, text) 
 VALUES (5, 'One More Place', 'This is the One More Place. Many famous bands have performed here');
 
-SELECT * FROM locations
+-- SELECT * FROM locations

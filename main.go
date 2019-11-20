@@ -22,6 +22,7 @@ func main() {
 	fmt.Println(port)
 
 	router.HandleFunc("/api/locations/{location_id}", controllers.FetchLocationById).Methods("GET")
+	router.HandleFunc("/api/locations", controllers.FetchAllLocations).Methods("GET")
 
 	err := http.ListenAndServe(":"+port, router)
 	if err != nil {
