@@ -14,7 +14,7 @@ var db *gorm.DB
 
 func init() {
 
-	e := godotenv.Load() //load .env file
+	e := godotenv.Load()
 	if e != nil {
 		fmt.Print(e)
 	}
@@ -31,10 +31,8 @@ func init() {
 	}
 
 	db = conn
-	// db.Debug().AutoMigrate(&Account{}, &Contact{})
 }
 
-//returns a handle to the DB object
 func GetDB() *gorm.DB {
 	return db
 }
