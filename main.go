@@ -2,33 +2,28 @@ package main
 
 import (
 	"fmt"
+	"go-api/controllers"
 	"net/http"
 	"os"
 
 	"github.com/gorilla/mux"
 )
 
-func get(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(`{"message": "GET called"}`))
-}
-
 func main() {
 
 	router := mux.NewRouter()
-	router.Use() //attach JWT auth middleware
+	router.Use()
 
-	port := os.Getenv("PORT") //Get port from .env file, we did not specify any port so this should return an empty string when tested locally
+	port := os.Getenv("PORT")
 	if port == "" {
-		port = "9080" //localhost
+		port = "9090"
 	}
 
 	fmt.Println(port)
 
-	router.HandleFunc("/api", get).Methods("GET")
+	router.HandleFunc("/api/locations/{location_id}", controllers.FetchLocationById).Methods("GET")
 
-	err := http.ListenAndServe(":"+port, router) //Launch the app, visit localhost:8000/api
+	err := http.ListenAndServe(":"+port, router)
 	if err != nil {
 		fmt.Print(err)
 	}
