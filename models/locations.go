@@ -6,10 +6,13 @@ import (
 
 type Location struct {
 	gorm.Model
-	Id         int    `json:"id"`
-	Name       string `json:"name"`
-	Text       string `json:"text"`
-	Deleted_at string `json:"deleted_at"`
+	Id         int     `json:"id"`
+	Name       string  `json:"name"`
+	Text       string  `json:"text"`
+	Deleted_at string  `json:"deleted_at"`
+	Image_url  string  `json:"image_url"`
+	Lat        float64 `json:"lat"`
+	Long       float64 `json:"long"`
 }
 
 func GetAllLocations() []*Location {
